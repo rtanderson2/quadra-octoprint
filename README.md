@@ -1,6 +1,6 @@
-#Install Octoprint on the Inovato Quadra – Complete Guide!
+# Install Octoprint on the Inovato Quadra – Complete Guide!
 
-##Assumptions
+## Assumptions
 - You already have a Linux distro installed
 - You created a pi user account that has sudo rights
 - You are logged into the pi account
