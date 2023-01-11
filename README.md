@@ -13,4 +13,5 @@
 Run Updates
 
 `sudo apt update`
+
 `sudo apt upgrade`
