@@ -8,7 +8,9 @@
 - You know the IP address of the Linux device
 - This guide covers setting up a USB camera but you can skip that section if you don’t plan on using one
 
-##Base Install
+## Base Install
+
 Run Updates
+
 `sudo apt update`
 `sudo apt upgrade`
