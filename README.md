@@ -1,11 +1,13 @@
-# Install Octoprint on the Inovato Quadra – Complete Guide!
+# Manually Install Octoprint On Linux – Complete Guide!
+
+I wrote these instructions specifically for use on the Inovato Quadra. But the reality is, any hardware running a flavor of Debian should work just fine.
 
 ## Assumptions
-- You haven't done anything but plugin your Quadra and turn it on
-- You know the IP address of the Quadra
+- You haven't done anything but plugin your Quadra. 
+- You know the IP address of the Quadra (I suggest setting up a reserved IP on your router)
 - This guide covers setting up a USB camera but you can skip that section if you don’t plan on using one
 
-All of these steps can be completed via the command line via SSH. You can even setup wifi via the command line, but you'll need to use your Google-fu to learn how to do that.
+All of these steps can be completed via the command line via SSH. You can even setup wifi via the command line, but you'll need to use your Google-fu to learn how to do that. 
 
 ## Step 1 - The User
 
@@ -47,15 +49,15 @@ You should basically always do this before you start installing stuff on Linux.
 
 `mkdir OctoPrint && cd OctoPrint`
 
-### Setup Virtual Environment
+### Setup Your Virtual Environment
 
 `python3 -m venv venv`
 
 `source venv/bin/activate`
 
-### Install Octoprint
-
 `pip install pip --upgrade`
+
+### Install Octoprint
 
 `pip install octoprint`
 
