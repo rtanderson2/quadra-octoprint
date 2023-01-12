@@ -81,6 +81,16 @@ You should basically always do this before you start installing stuff on Linux.
 
 `sudo service octoprint {start|stop|restart|status }`
 
+### Allow system rebooting, shutting down, and restarting OctoPrint from OctoPrint UI
+
+`sudo nano /etc/sudoers`
+
+Add the following to the end of the file
+
+```
+pi ALL=(ALL) NOPASSWD: /usr/bin/systemctl poweroff, /usr/bin/systemctl reboot, /usr/bin/systemctl restart octoprint
+```
+
 ## Step 4 - Make It Easier To Access OctoPrint
        
 ### HAProxy Install/Setup
@@ -198,7 +208,13 @@ WantedBy=multi-user.target
   
 `sudo reboot`
   
-## Webcam URLs
+## System Controls and Webcam URLs
+
+**Restart OctoPrint:** sudo systemctl restart octoprint
+
+**Restart system:** sudo systemctl reboot
+
+**Shutdown system:** sudo systemctl poweroff
 
 **Stream URL:** /webcam/?action=stream
 
