@@ -1,12 +1,21 @@
 # Install Octoprint on the Inovato Quadra – Complete Guide!
 
 ## Assumptions
-- You already have a Linux distro installed
-- You created a pi user account that has sudo rights
-- You are logged into the pi account
-- Your using a device that has USB ports
-- You know the IP address of the Linux device
+- You haven't done anything but plugin your Quadra and turn it on
+- You know the IP address of the Quadra
 - This guide covers setting up a USB camera but you can skip that section if you don’t plan on using one
+
+All of these steps can be completed via the command line via SSH. You can even setup wifi via the command line, but you'll need to use your Google-fu to learn how to do that.
+
+## Create the pi user
+
+If you don't want to use the username 'pi' here, that's fine. You'll just have to change it everywhere throughout the rest of this document.
+
+`sudo useradd -m pi -s /bin/bash`
+
+## Give the pi user sudo access
+
+`usermod -aG sudo pi`
 
 ## Run Updates
 
