@@ -113,7 +113,17 @@ backend webcam
 ```
 
 ## Step 5 - The Webcam
-       
+
+### Check where your webcam is mounted
+
+Chances are, your webcam mounts at /dev/video1. But we can find out easily enough. 
+
+`sudo apt-get install v4l-utils`
+
+`v4l2-ctl --list-devices`
+
+You should see your webcam listed and it'll tell you where it's mounted. If it's anything other than /dev/video1 take note. 
+
 ### Build ustreamer
 
 `cd ~`
@@ -132,7 +142,7 @@ backend webcam
 
 `nano /home/pi/scripts/webcamDaemon`
 
-Copy code below into webcamDaemon file just created
+Copy code below into webcamDaemon file just created. If your camera is mounted somewhere other than /dev/video1 you'll need to update this script accordingly. You can also change the resolution here. By default the FPS is set to 15. There's a bunch of other options for ustreamer you can checkout, too.
 
 ```  
 #!/bin/bash
