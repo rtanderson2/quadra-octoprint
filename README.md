@@ -70,42 +70,61 @@ HAProxy is used to serve the front end of the site on port 80 and direct the tra
 
 Add this to the bottom of the config
 
-`frontend public`
-`       bind *:80`
-`       use_backend webcam if { path_beg /webcam/ }`
-`       default_backend octoprint`
-`
-`backend octoprint`
-`        option forwardfor`
-`        server octoprint1 127.0.0.1:5000`
-`
-`backend webcam`
-`        http-request replace-path /webcam/(.*)   /\1`
-`        server webcam1  127.0.0.1:8080`
+```  
+frontend public
+       bind *:80
+       use_backend webcam if { path_beg /webcam/ }
+       default_backend octoprint
 
-Install/Setup Webcam Support
-Build ustreamer
-cd ~
+backend octoprint
+        option forwardfor
+        server octoprint1 127.0.0.1:5000
 
-sudo apt install build-essential libevent-dev libjpeg-dev libbsd-dev
+backend webcam
+        http-request replace-path /webcam/(.*)   /\1
+        server webcam1  127.0.0.1:8080
+```
 
-git clone --depth=1 https://github.com/pikvm/ustreamer
+## Install/Setup Webcam Support
 
-cd ustreamer
+### Build ustreamer
 
-make
-Set ustreamer to Autostart
-mkdir /home/pi/scripts
-nano /home/pi/scripts/webcamDaemon
-Copy code below into webcamDaemon file just created
+`cd ~`
+
+`sudo apt install build-essential libevent-dev libjpeg-dev libbsd-dev`
+
+`git clone --depth=1 https://github.com/pikvm/ustreamer`
+
+`cd ustreamer`
+
+`make`
+
+## Set ustreamer to Autostart
+
+`mkdir /home/pi/scripts`
+
+`nano /home/pi/scripts/webcamDaemon`
+
+## Copy code below into webcamDaemon file just created
+
+```  
 #!/bin/bash
 
 /home/pi/ustreamer/ustreamer --device=/dev/video1 --host=0.0.0.0 --port=8080 --format=MJPEG --resolution=1280x720 > /dev/null 2>&1
-Setup Permissions on webcam File
-chmod +x /home/pi/scripts/webcamDaemon
-Create webcamd Service
-sudo nano /etc/systemd/system/webcamd.service
-Copy code below into webcamd service file just created
+
+```  
+
+## Setup Permissions on webcam File
+
+`chmod +x /home/pi/scripts/webcamDaemon`
+
+## Create webcamd Service
+
+`sudo nano /etc/systemd/system/webcamd.service`
+
+## Copy code below into webcamd service file just created
+
+```  
 [Unit]
 Description=uStreamer webcam streamer for OctoPrint
 After=network-online.target OctoPrint.service
@@ -118,12 +137,22 @@ ExecStart=/home/pi/scripts/webcamDaemon
 
 [Install]
 WantedBy=multi-user.target
-Enable the webcamd Service
-sudo systemctl daemon-reload
-sudo systemctl enable webcamd
-Reboot
-sudo reboot
-Webcam URLs
-Stream URL: /webcam/?action=stream
-Snapshot URL: http://127.0.0.1:8080/?action=snapshot
-Path to FFMPEG: /usr/bin/ffmpeg
+```
+  
+## Enable the webcamd Service
+
+`sudo systemctl daemon-reload`
+  
+`sudo systemctl enable webcamd`
+  
+## Reboot
+  
+`sudo reboot`
+  
+## Webcam URLs
+
+**Stream URL:** /webcam/?action=stream
+
+**Snapshot URL:** http://127.0.0.1:8080/?action=snapshot
+  
+**Path to FFMPEG:** /usr/bin/ffmpeg
