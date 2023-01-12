@@ -17,6 +17,12 @@ If you don't want to use the username 'pi' here, that's fine. You'll just have t
 
 `usermod -aG sudo pi`
 
+## Change to the pi user and go to the home folder
+
+`sudo su pi`
+
+`cd ~`
+
 ## Run Updates
 
 `sudo apt update`
