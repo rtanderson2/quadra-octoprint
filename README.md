@@ -164,13 +164,23 @@ ExecStart=/home/pi/scripts/webcamDaemon
 WantedBy=multi-user.target
 ```
   
-### Enable the webcamd Service
+### Enable The webcamd Service
 
 `sudo systemctl daemon-reload`
   
 `sudo systemctl enable webcamd`
-  
-## Step 6 - Like Any Good Install, Reboot When You're Done
+       
+## Step 6 - Fix Your Timezone
+ 
+### Get the timezone list if you don't know yours       
+
+`sudo timedatectl list-timezones`
+
+### Update to the correct timezone
+       
+`sudo timedatectl set-timezone Africa/Cairo`       
+       
+## Step 7 - Like Any Good Install, Reboot When You're Done
 
 ### Reboot
   
