@@ -41,7 +41,7 @@ You should basically always do this before you start installing stuff on Linux.
 
 ### Install Packages
 
-`sudo apt install python3-pip python3-dev python3-setuptools python3-venv git libyaml-dev build-essential`
+`sudo apt install python3-pip python3-dev python3-setuptools python3-venv git libyaml-dev build-essential ffmpeg`
 
 ### Setup Octoprint Folder
 
